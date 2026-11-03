@@ -56,3 +56,11 @@ Deploy command: npx wrangler deploy
 Root directory: корень репозитория (/).
 
 Если Cloudflare сообщает ENOENT package.json, проверьте, что выбран именно этот репозиторий и актуальный коммит main. В корне main должны находиться package.json, src, public и wrangler.jsonc.
+
+## GitHub Pages
+
+Публикация настроена в .github/workflows/pages.yml. В GitHub: Settings → Pages → Build and deployment → Source: GitHub Actions. После этого запустить Publish website to GitHub Pages во вкладке Actions через Run workflow, ветка main.
+
+До подключения собственного домена адрес сайта: https://moiseevasveta99-cmd.github.io/netprofit-studio/ . Для этого Custom domain в настройках Pages должен быть пустым. Когда домен будет подключён, workflow получает новый base_path из настроек Pages автоматически; после смены домена следует повторно запустить workflow.
+
+Токены бота остаются в отдельном Cloudflare Worker. Адрес ALLOWED_ORIGIN для формы будет настроен отдельным шагом.

@@ -45,3 +45,14 @@ https://weathered-cell-98d7.moiseevasveta990.workers.dev/
 src/ — компоненты и стили. public/ — используемые изображения и дым. Исходные графические черновики, зависимости, локальные логи и секреты в репозиторий не включены.
 
 Проверки: TypeScript и production-сборка проходят. Полная визуальная проверка в браузере была пропущена по просьбе заказчика.
+
+## Публикация в существующий Cloudflare Workers
+
+Для проекта Worker netprofit-studio добавлен wrangler.jsonc: публикуется папка dist как Static Assets. Отдельный обработчик заявок weathered-cell-98d7 не меняется.
+
+Источник: moiseevasveta99-cmd/netprofit-studio, ветка main, корень репозитория.
+Build command: npm run build
+Deploy command: npx wrangler deploy
+Root directory: корень репозитория (/).
+
+Если Cloudflare сообщает ENOENT package.json, проверьте, что выбран именно этот репозиторий и актуальный коммит main. В корне main должны находиться package.json, src, public и wrangler.jsonc.
